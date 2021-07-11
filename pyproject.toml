@@ -6,6 +6,8 @@ authors = ["Alexander Bausk <bauskas@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+python-dotenv = "^0.18.0"
+cryptography = "^3.4.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

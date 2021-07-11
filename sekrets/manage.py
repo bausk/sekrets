@@ -122,9 +122,7 @@ def rotate_credentials(env, encrypted_path=None, secrets_map=None):
         RuntimeError: Environment isn't set properly
     """
     if env is None or env == "":
-        raise RuntimeError(
-            "Environment was not explicitly specified during credentials rotation"
-        )
+        raise RuntimeError("Environment was not explicitly specified during credentials rotation")
     secret_key = Fernet.generate_key()
     replace_credentials(secret_key, env, encrypted_path, secrets_map)
     fp = open("./.secrets/key", "wb")
@@ -152,9 +150,7 @@ def encrypt_credentials(env: str, encrypted_path=None, secrets_map=None):
         raise RuntimeError("Environment was not explicitly specified during encryption")
     secret_key = os.environ.get(f"APP_SECRET_{env.upper()}", None)
     if secret_key is None:
-        raise Exception(
-            f"{env}: No APP_SECRET_{env.upper()} variable found for specified environment"
-        )
+        raise Exception(f"{env}: No APP_SECRET_{env.upper()} variable found for specified environment")
     return replace_credentials(secret_key, env, encrypted_path, secrets_map)
 
 
